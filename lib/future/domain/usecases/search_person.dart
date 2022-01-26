@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter_clean1/core/error/failure.dart';
 import 'package:flutter_clean1/core/usecases/usecase.dart';
 import 'package:flutter_clean1/future/domain/entities/peson_entity.dart';
@@ -18,7 +20,7 @@ class SearchPersons extends UseCase<List<PersonEntity>, SearchPersonParams> {
 
 class SearchPersonParams extends Equatable {
   String? query;
-  SearchPersonParams(this.query);
+  SearchPersonParams({@required this.query});
 
   @override
   // TODO: implement props

@@ -34,7 +34,7 @@ class PersonRepositoryImpl implements PersonRepository {
 
         return Right(localPerson);
       } on CacheExeption {
-        return Left(ChaheFailure());
+        return Left(CacheFailure());
       }
     }
   }
@@ -56,7 +56,7 @@ class PersonRepositoryImpl implements PersonRepository {
 
         return Right(localPerson);
       } on CacheExeption {
-        return Left(ChaheFailure());
+        return Left(CacheFailure());
       }
     }
   }
