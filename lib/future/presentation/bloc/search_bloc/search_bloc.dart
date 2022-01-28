@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean1/core/error/failure.dart';
 import 'package:flutter_clean1/future/domain/usecases/search_person.dart';
@@ -5,9 +6,10 @@ import 'package:flutter_clean1/future/presentation/bloc/search_bloc/search_event
 import 'package:flutter_clean1/future/presentation/bloc/search_bloc/search_state.dart';
 
 class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
-  final SearchPersons searchPersons;
+  SearchPersons? searchPersons;
 
-  PersonSearchBloc(this.searchPersons) : super(PersonSearchEmpty()) {}
+  PersonSearchBloc({@required this.searchPersons})
+      : super(PersonSearchEmpty()) {}
   Stream<PersonSearchState> mapEventToState(PersonSearchEvent event) async* {
     if (event is SearchPerson) {
       yield* _mapFetchPersonToState(event.personQuery);
@@ -19,7 +21,7 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
     (SearchPersonParams(query: personQuery));
 
     final failureOrPerson =
-        await searchPersons(SearchPersonParams(query: personQuery));
+        await searchPersons!(SearchPersonParams(query: personQuery));
 
     yield failureOrPerson.fold(
         (failure) => PersonSearchError(message: 'errorBitch'),

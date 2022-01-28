@@ -5,7 +5,7 @@ import 'package:flutter_clean1/core/error/exeption.dart';
 import 'package:flutter_clean1/future/data/models/person_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class PersonLocalDataCourse {
+abstract class PersonLocalDataSourse {
   /// Gets the cached  which [List<PersonModel>] was gotten the last time
   /// the user had an internet connection.
   ///
@@ -15,7 +15,7 @@ abstract class PersonLocalDataCourse {
   Future<void> personToChahe(List<PersonModel> persons);
 }
 
-class PersonLocalDataSourseImpl implements PersonLocalDataCourse {
+class PersonLocalDataSourseImpl implements PersonLocalDataSourse {
   SharedPreferences? sharedPreferences;
 
   PersonLocalDataSourseImpl({@required this.sharedPreferences});
